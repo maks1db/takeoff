@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test component "Input" should render type=number 1`] = `
+<div>
+  <label
+    for="test1"
+  >
+    test-title
+  </label>
+  <input
+    id="test1"
+    name="test1"
+    type="number"
+  />
+</div>
+`;
+
+exports[`test component "Input" should render type=text with error 1`] = `
+<div>
+  <label
+    for="test2"
+  >
+    test error
+  </label>
+  <input
+    id="test2"
+    name="test2"
+    type="text"
+  />
+  <span
+    class="error"
+  >
+    error
+  </span>
+</div>
+`;
