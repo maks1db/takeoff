@@ -1,4 +1,5 @@
 import { Configuration } from 'webpack';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 import { useCss, useSass } from './partials/loaders';
 
@@ -20,4 +21,7 @@ export default {
         historyApiFallback: true,
         hot: true,
     },
+    plugins: [
+        new ReactRefreshWebpackPlugin(),
+    ],
 } as Configuration;

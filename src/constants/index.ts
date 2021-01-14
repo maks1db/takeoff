@@ -1,4 +1,4 @@
-const domain = 'http://localhost:3000';
+const domain = 'http://localhost:3100';
 
 export const USERS_URL = `${domain}/users`;
 export const CONTACTS_URL = `${domain}/contacts`;

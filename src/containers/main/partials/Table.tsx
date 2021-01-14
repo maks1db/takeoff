@@ -1,24 +1,23 @@
 import React, { FC } from 'react';
 
 import { ContactEntity, contactModel } from '../../partials';
-import { parseModel } from './helpers';
 
-const { keys, names } = parseModel(contactModel);
+const keys = Object.keys(contactModel);
 
 export const Head: FC = () => (
     <>
         <thead>
             <tr>
-                {names.map(x => (
-                    <th key={x}>{x}</th>
+                {keys.map(x => (
+                    <th key={x}>{contactModel[x].name}</th>
                 ))}
             </tr>
         </thead>
     </>
 );
 
-export const Row: FC<ContactEntity> = ({ id, ...rest }) => (
-    <tr>
+export const Row: FC<ContactEntity & { onClick: (path: string) => void}> = ({ id, onClick, ...rest }) => (
+    <tr onClick={() => onClick(`/contact/${id}`)}>
         {keys.map(x => (
             <td key={x}>{rest[x]}</td>
         ))}

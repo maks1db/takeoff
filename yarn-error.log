@@ -1,5 +1,5 @@
 Arguments: 
-  /home/maksim/.nvm/versions/node/v12.20.0/bin/node /usr/share/yarn/bin/yarn.js start
+  /home/maksim/.nvm/versions/node/v12.20.0/bin/node /usr/share/yarn/bin/yarn.js
 
 PATH: 
   /home/maksim/.nvm/versions/node/v12.20.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  SyntaxError: /home/maksim/www/search/takeoff/package.json: Unexpected token } in JSON at position 1282
+  SyntaxError: /home/maksim/www/search/takeoff/package.json: Unexpected token } in JSON at position 3399
       at JSON.parse (<anonymous>)
       at /usr/share/yarn/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -28,7 +28,7 @@ npm manifest:
     "scripts": {
       "start": "rimraf public && TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack-dev-server --content-base public --debug --output-pathinfo --watch-poll --hot --inline --host 0.0.0.0 --port 4001 --mode development",
       "build": "rimraf public && TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --mode production",
-      "server": "json-server utils/mock/index.js",
+      "server": "json-server utils/mock/index.js --no-cors",
       "test": "jest"
     },
     "repository": {
@@ -58,6 +58,7 @@ npm manifest:
       "reselect": "~4.0.0",
       "classnames": "~2.2.6",
       "connected-react-router": "~6.8.0",
+      "regenerator-runtime": "~0.13.5"
     },
     "devDependencies": {
       "@testing-library/react": "~11.2.2",
@@ -116,7 +117,10 @@ npm manifest:
       "webpack": "~5.10.3",
       "webpack-cli": "~3.3.10",
       "webpack-dev-server": "~3.11.0",
-      "webpack-merge": "~5.4.0"
+      "webpack-merge": "~5.4.0",
+      "@types/react-redux": "~7.1.15",
+      "@types/react-router-dom": "~5.1.7",
+      "react-refresh": "~0.9.0",
     },
     "author": "Maxim Skvortsov",
     "bugs": {
@@ -1527,6 +1531,14 @@ Lockfile:
     resolved "http://npm.smi2.tech/@types%2fhistory/-/history-4.7.8.tgz#49348387983075705fe8f4e02fb67f7daaec4934"
     integrity sha512-S78QIYirQcUoo6UJZx9CSP0O2ix9IaeAXwQi26Rhr/+mg7qqPy8TzaxHSUut7eGjL8WmLccT7/MXf304WjqHcA==
   
+  "@types/hoist-non-react-statics@^3.3.0":
+    version "3.3.1"
+    resolved "http://npm.smi2.tech/@types%2fhoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+    integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+    dependencies:
+      "@types/react" "*"
+      hoist-non-react-statics "^3.3.0"
+  
   "@types/html-minifier-terser@^5.0.0":
     version "5.1.1"
     resolved "http://npm.smi2.tech/@types%2fhtml-minifier-terser/-/html-minifier-terser-5.1.1.tgz#3c9ee980f1a10d6021ae6632ca3e79ca2ec4fb50"
@@ -1630,7 +1642,26 @@ Lockfile:
     dependencies:
       "@types/react" "*"
   
-  "@types/react-router@~5.1.11":
+  "@types/react-redux@~7.1.15":
+    version "7.1.15"
+    resolved "http://npm.smi2.tech/@types%2freact-redux/-/react-redux-7.1.15.tgz#19075884db94101be762accef924d266a603fb1b"
+    integrity sha512-+piY42tUflPfI7y9Vy3UkG6MEMuJlrxfdtgeUcWmd5Z0qB57NXAPG6smkqu1DNXluo/KDyXPeRYhcFzMwt1BEA==
+    dependencies:
+      "@types/hoist-non-react-statics" "^3.3.0"
+      "@types/react" "*"
+      hoist-non-react-statics "^3.3.0"
+      redux "^4.0.0"
+  
+  "@types/react-router-dom@~5.1.7":
+    version "5.1.7"
+    resolved "http://npm.smi2.tech/@types%2freact-router-dom/-/react-router-dom-5.1.7.tgz#a126d9ea76079ffbbdb0d9225073eb5797ab7271"
+    integrity sha512-D5mHD6TbdV/DNHYsnwBTv+y73ei+mMjrkGrla86HthE4/PVvL1J94Bu3qABU+COXzpL23T1EZapVVpwHuBXiUg==
+    dependencies:
+      "@types/history" "*"
+      "@types/react" "*"
+      "@types/react-router" "*"
+  
+  "@types/react-router@*", "@types/react-router@~5.1.11":
     version "5.1.11"
     resolved "http://npm.smi2.tech/@types%2freact-router/-/react-router-5.1.11.tgz#b01ce4cb21bf7d6b32edc862fc1e2c0088044b5b"
     integrity sha512-ofHbZMlp0Y2baOHgsWBQ4K3AttxY61bDMkwTiBOkPg7U6C/3UwwB5WaIx28JmSVi/eX3uFEMRo61BV22fDQIvg==
@@ -3589,6 +3620,11 @@ Lockfile:
       abab "^2.0.3"
       whatwg-mimetype "^2.3.0"
       whatwg-url "^8.0.0"
+  
+  debounce@~1.2.0:
+    version "1.2.0"
+    resolved "http://npm.smi2.tech/debounce/-/debounce-1.2.0.tgz#44a540abc0ea9943018dc0eaa95cce87f65cd131"
+    integrity sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg==
   
   debug@*, debug@4.3.1, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
     version "4.3.1"
@@ -8913,7 +8949,7 @@ Lockfile:
     dependencies:
       "@redux-saga/core" "^1.1.3"
   
-  redux@^4.0.4, redux@~4.0.5:
+  redux@^4.0.0, redux@^4.0.4, redux@~4.0.5:
     version "4.0.5"
     resolved "http://npm.smi2.tech/redux/-/redux-4.0.5.tgz#4db5de5816e17891de8a80c424232d06f051d93f"
     integrity sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==
@@ -8933,7 +8969,7 @@ Lockfile:
     resolved "http://npm.smi2.tech/regenerate/-/regenerate-1.4.2.tgz#b9346d8827e8f5a32f7ba29637d398b69014848a"
     integrity sha512-zrceR/XhGYU/d/opr2EKO7aRHUeiBI8qjtfHqADTwZd6Szfy16la6kqD0MIUs5z5hx6AaKa+PixpPrR289+I0A==
   
-  regenerator-runtime@^0.13.4:
+  regenerator-runtime@^0.13.4, regenerator-runtime@~0.13.5:
     version "0.13.7"
     resolved "http://npm.smi2.tech/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
     integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==

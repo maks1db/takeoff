@@ -3,7 +3,7 @@ import { ContactEntity } from '../types';
 type ModelType = { [K in keyof ContactEntity]: { name: string, type: string }};
 
 export default {
-    firtName: {
+    firstName: {
         name: 'First name',
         type: 'text',
     },

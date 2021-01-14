@@ -3,7 +3,7 @@ import { Route, Switch, Router } from 'react-router';
 import { History } from 'history';
 
 import {
-    Auth, Main, Contact, Page404,
+    Auth, Main, Contact, Page404, AuthWrapper,
 } from './containers';
 
 interface AppProps {
@@ -17,10 +17,14 @@ const App: FC<AppProps> = ({ history }) => (
                 <Auth />
             </Route>
             <Route path="/contact/:id?">
-                <Contact />
+                <AuthWrapper>
+                    <Contact />
+                </AuthWrapper>
             </Route>
             <Route path="/" exact>
-                <Main />
+                <AuthWrapper>
+                    <Main />
+                </AuthWrapper>
             </Route>
             <Route path="/404">
                 <Page404 />

@@ -1,0 +1,16 @@
+{
+    "extends": ["stylelint-config-standard", "stylelint-config-css-modules"],
+    "plugins": ["stylelint-order", "stylelint-config-rational-order/plugin"],
+    "rules": {
+        "property-no-unknown": [
+            true,
+            {
+                "ignoreProperties": ["composes", "compose-with"]
+            }
+        ],
+        "media-feature-name-no-unknown": null,
+        "at-rule-no-unknown": [true, {
+            "ignoreAtRules": ["mixin", "include"]
+        }]
+    }
+}

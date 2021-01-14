@@ -2,10 +2,16 @@
   "name": "takeoff",
   "version": "1.0.0",
   "scripts": {
-    "start": "rimraf public && TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack-dev-server --content-base public --debug --output-pathinfo --watch-poll --hot --inline --host 0.0.0.0 --port 4001 --mode development",
+    "start": "rimraf public && TS_NODE_PROJECT=\"webpack.tsconfig.json\" NODE_ENV=development webpack-dev-server --content-base public --debug --output-pathinfo --watch-poll --hot --inline --host localhost --port 4001 --mode development --open",
     "build": "rimraf public && TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --mode production",
-    "server": "json-server utils/mock/index.js --no-cors",
-    "test": "jest"
+    "server": "json-server utils/mock/index.js --no-cors --port 3100",
+    "test": "jest",
+    "typecheck": "tsc --project tsconfig.json",
+    "eslint": "eslint './src/**'",
+    "eslint:fix": "eslint './src/**'",
+    "stylelint": "stylelint 'src/**' --syntax scss",
+    "stylelint:fix": "stylelint 'src/**' --syntax scss --fix",
+    "serve": "lite-server --baseDir public"
   },
   "repository": {
     "type": "git",
@@ -93,7 +99,15 @@
     "webpack": "~5.10.3",
     "webpack-cli": "~3.3.10",
     "webpack-dev-server": "~3.11.0",
-    "webpack-merge": "~5.4.0"
+    "webpack-merge": "~5.4.0",
+    "@types/react-redux": "~7.1.15",
+    "@types/react-router-dom": "~5.1.7",
+    "react-refresh": "~0.9.0",
+    "stylelint": "~13.2.1",
+    "stylelint-config-css-modules": "~2.2.0",
+    "stylelint-config-rational-order": "~0.1.2",
+    "stylelint-config-standard": "~20.0.0",
+    "stylelint-order": "~4.0.0"
   },
   "author": "Maxim Skvortsov",
   "bugs": {

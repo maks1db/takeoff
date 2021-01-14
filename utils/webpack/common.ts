@@ -1,5 +1,6 @@
 import { Configuration } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 const dir = process.cwd();
 
@@ -19,6 +20,7 @@ export default {
             template: 'src/template/template.html',
             filename: 'index.html',
         }),
+        new ForkTsCheckerWebpackPlugin(),
     ],
     module: {
         rules: [

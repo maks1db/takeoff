@@ -16,7 +16,6 @@ const mock = {
         lastName: faker.name.lastName(),
         phone: faker.phone.phoneNumber(),
         country: faker.address.country(),
-        image: faker.image.animals(),
         age: faker.random.number(18, 60),
     })),
     status: { status: 'ok' },

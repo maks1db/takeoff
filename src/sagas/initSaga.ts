@@ -1,21 +1,23 @@
 import { push } from 'connected-react-router';
 import {
-    call, put, takeLatest, fork,
+    call, put, takeLatest,
 } from 'redux-saga/effects';
 
 import { STATUS_URL } from '../constants';
 import { fetchWrapper } from '../helpers';
 import { initApp } from '../reducers/root';
-import authWorker from './authSaga';
+import { authWorker } from './authSaga';
 
 const { error } = console;
 
 function* initWorker() {
+    /**
+     * Проверка на работу сервера
+     */
     try {
         const { status } = yield call(fetchWrapper, STATUS_URL);
-
         if (status === 'ok') {
-            yield fork(authWorker);
+            yield call(authWorker);
             return;
         }
     } catch (e) {
@@ -26,5 +28,5 @@ function* initWorker() {
 }
 
 export default function* initSaga() {
-    yield takeLatest(initApp, initWorker);
+    yield takeLatest([initApp], initWorker);
 }

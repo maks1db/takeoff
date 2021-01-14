@@ -1,18 +1,19 @@
 .form {
-    padding-top: 16px;
-    @media (min-width: 640px) {
-        margin: 0 auto;
-        width: 500px
-    }
+  padding-top: 16px;
+
+  @media (min-width: 640px) {
+    margin: 0 auto;
+    width: 500px;
+  }
 }
 
 .buttons {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    button {
-        margin: 0 10px;
-    }
+  button {
+    margin: 0 10px;
+  }
 }

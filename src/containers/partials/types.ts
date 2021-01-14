@@ -1,9 +1,8 @@
 export interface ContactEntity {
-    id: number;
-    firtName: string;
+    id: number | string;
+    firstName: string;
     lastName: string;
     phone: string;
     country: string;
     age: number;
-    photo: string;
 }
